@@ -1,0 +1,8 @@
+{
+  "schema": "gamebench.craftax.exotic_cybernetics_sweep.v1",
+  "suite_id": "craftax_exotic_cybernetics_smoke_v2",
+  "task_template": "tasks/policy_dev_template.json",
+  "seeds": [101, 102],
+  "max_steps": 40,
+  "input_token_budget": 20000
+}

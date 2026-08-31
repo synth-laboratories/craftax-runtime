@@ -1,0 +1,203 @@
+{
+  "run": {
+    "run_id": "craftax_gamebench_rust_gelo_smoke",
+    "output_dir": "configs/reports/goex_runs"
+  },
+  "container": {
+    "url": "http://127.0.0.1:8104",
+    "startup_timeout_seconds": 30
+  },
+  "taskset": {
+    "train_seeds": [101, 102, 103, 104],
+    "heldout_seeds": [501, 502],
+    "profile": "craftax_singleplayer_rust",
+    "backend": "gamebench_gold_rust",
+    "reward_mode": "progress",
+    "env_config": {
+      "task_path": "tasks/policy_dev_template.json",
+      "gamebench_task": "craftax-singleplayer",
+      "substrate": "rust",
+      "max_steps": 80,
+      "objective": "Collect resources, craft tools, and unlock Craftax achievements."
+    },
+    "context": {
+      "task_family": "craftax-singleplayer",
+      "gamebench_task": "craftax-singleplayer",
+      "substrate_label": "gamebench/craftax-singleplayer/rust",
+      "checkpoint_restore_semantics": "true_environment_snapshot",
+      "allow_request_snapshot_resume": false,
+      "require_real_rewards": true,
+      "required_candidate_kind": "prompt",
+      "prompt_only_candidate_authoring": true,
+      "forbid_code_policy_candidates": true,
+      "target_objective_label": "midgame_crafting_progress",
+      "source_ref": "gamebench/tasks/craftax-singleplayer/gold_rust"
+    }
+  },
+  "policy": {
+    "model": "openai/gpt-oss-120b",
+    "provider": "groq",
+    "api_key_env": "GROQ_API_KEY",
+    "inference_url": "https://api.groq.com/openai/v1/chat/completions",
+    "max_tokens": 512,
+    "config": {
+      "use_lm": true,
+      "policy_id": "craftax_react_groq_v1",
+      "temperature": 0.0,
+      "max_llm_turns": 20,
+      "max_steps": 80
+    }
+  },
+  "go_ex": {
+    "max_rollouts": 40,
+    "proposer_rounds": 1,
+    "base_react_system_prompt": "You are a Craftax ReAct policy on GameBench rust gold. Collect wood and stone, craft tools, collect coal and iron, avoid dying, and make durable achievement progress. Reply with JSON only, for example {\"action\":\"do\"}.",
+    "segment_steps": 40,
+    "resume_segment_steps": 24,
+    "candidates_per_proposer": 2,
+    "heldout_measurement_rollouts": 2,
+    "holdout_consolidate_k": 2,
+    "bootstrap_train_rollout_count": 2,
+    "reserved_search_rollout_budget": 2,
+    "target_new_candidate_count": 2,
+    "auto_consolidate_min_mature_themes": 2,
+    "auto_consolidate_theme_count": 2,
+    "auto_consolidate_min_score": 0.0,
+    "max_llm_turns": 20,
+    "max_actions_per_turn": 1,
+    "submission_mode": "async",
+    "execute_live_proposers": true,
+    "request_timeout_seconds": 180.0,
+    "container_connect_timeout_seconds": 30.0,
+    "allow_resume_fallback_to_fresh": false,
+    "rollout_state_poll_seconds": 0.5,
+    "rollout_terminator_poll_seconds": 0.5,
+    "rollout_stall_timeout_seconds": 240.0,
+    "full_rollout_lane_enabled": true,
+    "full_rollout_budget_per_round": 0,
+    "full_rollout_initial_budget": 6,
+    "full_rollout_cadence": 1,
+    "preserve_search_measurement_split": true,
+    "theme_start_score_band": [0.0, 0.95],
+    "frontier_prune_enabled": true,
+    "frontier_prune_soft_cap": 120,
+    "frontier_prune_retain_tail": 40,
+    "frontier_prune_hard_delete": false,
+    "fresh_rollouts_per_parent": 0,
+    "resume_rollouts_per_parent": 1,
+    "full_rollout_concurrency": 4,
+    "theme_rollout_concurrency": 4,
+    "closeout_heldout_concurrency": 4,
+    "closeout_heldout_candidate_parallelism": 2,
+    "heldout_measurement_concurrency": 4,
+    "heldout_measurement_candidate_parallelism": 2,
+    "full_rollout_checkpoint_cadence": "per_llm_call",
+    "full_rollout_checkpoint_budget": 240,
+    "data_miner_min_new_checkpoints": 1,
+    "data_miner_rollouts_per_job": 2,
+    "agent_dispatch_concurrency": 2,
+    "agent_model_concurrency": {
+      "deepseek-v4-flash": 4,
+      "openai/gpt-oss-120b": 4
+    },
+    "data_miner_cadence": "after_full_rollout_phase",
+    "theme_finalize_min_checkpoints": 2,
+    "theme_partials_per_candidate": 1,
+    "theme_saturation_threshold": 0.9,
+    "theme_saturation_min_rollouts": 2,
+    "max_tentative_themes": 2,
+    "tentative_theme_max_age_rounds": 1,
+    "theme_proposal_round_budget": 1,
+    "theme_aux_budget_per_theme": 1,
+    "theme_no_progress_rounds": 1,
+    "theme_aux_rounds_per_staircase": 1,
+    "terminator_default": "agent",
+    "promotion_min_seeds": 1,
+    "promotion_margin": 0.01,
+    "consolidation_budget_per_round": 1,
+    "consolidation_max_themes": 2,
+    "allow_single_theme_consolidation": false,
+    "min_tentative_themes_before_activation": 1,
+    "data_miner_while_active_theme_climbing": true,
+    "data_miner_authority": false,
+    "all_candidate_holdout_seed_count": 2,
+    "auto_aux_hill_climb_calls_per_round": 1,
+    "theme_eval_checkpoints": 0
+  },
+  "seed_candidate": {
+    "react_system_prompt": "You are playing GameBench Craftax rust gold. Use valid container actions only. Prioritize survival, collect wood and stone, craft basic tools, recover coal and iron, and make measurable achievement progress."
+  },
+  "proposers": {
+    "core_proposer": {
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "role": "core_proposer",
+      "output_schema": "goex.core_proposer.output.v1",
+      "backend": "deepseek_chat",
+      "auth_mode": "api_key",
+      "timeout_seconds": 300,
+      "reasoning_effort": "high",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    },
+    "aux_hill_climb_proposer": {
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "role": "aux_hill_climb_proposer",
+      "output_schema": "goex.aux_hill_climb.output.v1",
+      "backend": "deepseek_chat",
+      "auth_mode": "api_key",
+      "timeout_seconds": 300,
+      "reasoning_effort": "high",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    },
+    "aux_data_miner_proposer": {
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "role": "aux_data_miner_proposer",
+      "output_schema": "goex.aux_data_miner.v1",
+      "backend": "deepseek_chat",
+      "auth_mode": "api_key",
+      "timeout_seconds": 300,
+      "reasoning_effort": "high",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    },
+    "aux_consolidate_proposer": {
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "role": "aux_consolidate_proposer",
+      "output_schema": "goex.aux_consolidate.output.v1",
+      "backend": "deepseek_chat",
+      "auth_mode": "api_key",
+      "timeout_seconds": 300,
+      "reasoning_effort": "high",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    },
+    "aux_consolidate_hill_climb_proposer": {
+      "model": "deepseek-v4-flash",
+      "provider": "deepseek",
+      "role": "aux_consolidate_hill_climb_proposer",
+      "output_schema": "goex.aux_consolidate_hill_climb.output.v1",
+      "backend": "deepseek_chat",
+      "auth_mode": "api_key",
+      "timeout_seconds": 300,
+      "reasoning_effort": "high",
+      "base_url": "https://api.deepseek.com",
+      "api_key_env": "DEEPSEEK_API_KEY"
+    }
+  },
+  "cache": {
+    "mode": "off"
+  },
+  "disk_budget": {
+    "enabled": true,
+    "soft_limit_gb": 5.0,
+    "hard_limit_gb": 10.0
+  },
+  "plugins": {
+    "enabled": ["prompt"]
+  }
+}

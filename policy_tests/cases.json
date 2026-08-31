@@ -1,0 +1,25 @@
+{
+  "schema": "gamebench.craftax.policy_tests.v1",
+  "cases": [
+    {
+      "case_id": "baseline_collects_wood",
+      "policy": "policies/heuristic_baseline.py",
+      "suite": "defaults/policy_sweep/policy_smoke_v1.json",
+      "min_score": 0.03,
+      "required_achievements": ["collect_wood"]
+    },
+    {
+      "case_id": "noop_makes_no_progress",
+      "policy": "policy_tests/policies/noop_policy.py",
+      "suite": "defaults/policy_sweep/policy_smoke_v1.json",
+      "max_score": 0.0,
+      "required_failure_modes": ["no_achievements"]
+    },
+    {
+      "case_id": "invalid_policy_records_violation",
+      "policy": "policy_tests/policies/invalid_policy.py",
+      "suite": "defaults/policy_sweep/policy_smoke_v1.json",
+      "required_failure_modes": ["invalid_action"]
+    }
+  ]
+}

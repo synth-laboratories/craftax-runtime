@@ -1,0 +1,6 @@
+FROM craftax-eval-target
+
+USER root
+COPY scripts/run_policy_sweep.py /opt/gamebench/tasks/craftax-singleplayer/scripts/run_policy_sweep.py
+RUN chown target:target /opt/gamebench/tasks/craftax-singleplayer/scripts/run_policy_sweep.py
+USER target

@@ -1,0 +1,31 @@
+{
+  "schema": "gamebench.task.craftax.v1",
+  "task_id": "minienv_wood_pickaxe_arena_v1",
+  "scenario_id": "minienv_wood_pickaxe_arena_v1",
+  "world": {
+    "use_default": "fixture_room",
+    "initial_state": {
+      "map": [
+        "#########",
+        "#.......#",
+        "#..@..T.#",
+        "#.......#",
+        "#...A...#",
+        "#.T.....#",
+        "#.......#",
+        "#.......#",
+        "#########"
+      ],
+      "inventory": {
+        "health": 9
+      },
+      "entities": []
+    }
+  },
+  "rules": {
+    "base": "symbolic_no_homeostasis"
+  },
+  "readouts": {
+    "profile": "symbolic_compact"
+  }
+}

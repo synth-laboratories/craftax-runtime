@@ -1,0 +1,7 @@
+{
+  "schema": "gamebench.craftax.policy_sweep.v1",
+  "suite_id": "craftax_policy_smoke_v1",
+  "task_template": "tasks/policy_dev_template.json",
+  "seeds": [101, 102, 103, 104, 105],
+  "max_steps": 60
+}

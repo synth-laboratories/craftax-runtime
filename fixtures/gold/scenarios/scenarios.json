@@ -1,0 +1,576 @@
+{
+  "schema": "gamebench.craftax.scenarios.v1",
+  "scenarios": [
+    {
+      "scenario_id": "smoke_reset",
+      "seed": 101,
+      "world": {"use_default": "fixture_room", "seed": 101},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": []
+    },
+    {
+      "scenario_id": "collect_tree_checkpoint_restore_and_wood_pickaxe",
+      "seed": 102,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 102,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"wood": 2},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "tree"}
+          ],
+          "entities": []
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do", "place_table"],
+      "checkpoint_after": 2,
+      "restore_then_actions": ["make_wood_pickaxe"]
+    },
+    {
+      "scenario_id": "craft_pickaxe_and_sword_chain",
+      "seed": 103,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 103,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"wood": 16, "stone": 4, "iron": 4, "coal": 4, "diamond": 8},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "crafting_table"},
+            {"pos": [4, 5], "kind": "furnace"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": [
+        "make_wood_pickaxe",
+        "make_stone_pickaxe",
+        "make_iron_pickaxe",
+        "make_diamond_pickaxe",
+        "make_wood_sword",
+        "make_stone_sword",
+        "make_iron_sword",
+        "make_diamond_sword"
+      ]
+    },
+    {
+      "scenario_id": "craft_arrow_torch_and_armour",
+      "seed": 104,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 104,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"wood": 4, "stone": 2, "coal": 4, "iron": 3, "diamond": 3},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "crafting_table"},
+            {"pos": [4, 5], "kind": "furnace"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["make_arrow", "make_torch", "make_iron_armour", "make_diamond_armour"]
+    },
+    {
+      "scenario_id": "placement_actions",
+      "seed": 105,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 105,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"wood": 2, "stone": 2, "sapling": 1, "torches": 1},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "water"},
+            {"pos": [4, 5], "kind": "grass"},
+            {"pos": [4, 6], "kind": "grass"},
+            {"pos": [2, 5], "kind": "grass"},
+            {"pos": [2, 4], "kind": "grass"},
+            {"pos": [3, 3], "kind": "grass"},
+            {"pos": [3, 4], "kind": "grass"},
+            {"pos": [1, 4], "kind": "grass"},
+            {"pos": [4, 3], "kind": "grass"}
+          ],
+          "entities": []
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["place_stone", "down", "place_table", "left", "place_furnace", "up", "place_plant", "left", "place_torch"]
+    },
+    {
+      "scenario_id": "mine_all_resources",
+      "seed": 106,
+      "world": {
+        "use_default": "parity_room",
+        "seed": 106,
+        "initial_state": {
+          "player": {"pos": [2, 5], "direction": [1, 0], "level": 0},
+          "inventory": {"pickaxe": 4},
+          "tiles": [
+            {"pos": [2, 5], "kind": "grass"},
+            {"pos": [3, 5], "kind": "stone"},
+            {"pos": [4, 5], "kind": "coal"},
+            {"pos": [5, 5], "kind": "iron"},
+            {"pos": [6, 5], "kind": "diamond"},
+            {"pos": [7, 5], "kind": "sapphire"},
+            {"pos": [8, 5], "kind": "ruby"}
+          ],
+          "entities": []
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do", "right", "do", "right", "do", "right", "do", "right", "do", "right", "do"]
+    },
+    {
+      "scenario_id": "drink_water_and_eat_plant",
+      "seed": 1061,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 1061,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "water"},
+            {"pos": [4, 5], "kind": "ripe_plant"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do", "down", "do"]
+    },
+    {
+      "scenario_id": "open_level_one_chest_finds_bow",
+      "seed": 107,
+      "world": {
+        "use_default": "parity_room",
+        "seed": 107,
+        "initial_state": {
+          "player": {"pos": [5, 5], "direction": [1, 0], "level": 1},
+          "tiles": [
+            {"level": 1, "pos": [5, 5], "kind": "path"},
+            {"level": 1, "pos": [6, 5], "kind": "chest"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "books_spells_and_bow_fire",
+      "seed": 108,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 108,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"books": 2, "mana": 9, "bow": 1, "arrows": 2},
+          "tiles": [{"pos": [4, 4], "kind": "grass"}],
+          "entities": [{"kind": "zombie", "pos": [7, 4], "level": 0, "health": 1}]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["read_book", "cast_spell", "read_book", "cast_spell", "shoot_arrow"]
+    },
+    {
+      "scenario_id": "potions_and_attribute_levels",
+      "seed": 109,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 109,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {
+            "health": 3,
+            "mana": 3,
+            "energy": 3,
+            "xp": 3,
+            "potions": {"red": 1, "green": 1, "blue": 1, "pink": 1, "cyan": 1, "yellow": 1}
+          }
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": [
+        "drink_potion_red",
+        "drink_potion_green",
+        "drink_potion_blue",
+        "drink_potion_pink",
+        "drink_potion_cyan",
+        "drink_potion_yellow",
+        "level_up_dexterity",
+        "level_up_strength",
+        "level_up_intelligence"
+      ]
+    },
+    {
+      "scenario_id": "sleep_to_wake_up",
+      "seed": 1091,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 1091,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"energy": 6}
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["sleep"]
+    },
+    {
+      "scenario_id": "block_surface_catalog",
+      "seed": 1092,
+      "world": {
+        "use_default": "parity_room",
+        "seed": 1092,
+        "initial_state": {
+          "player": {"pos": [5, 5], "direction": [1, 0], "level": 0},
+          "tiles": [
+            {"pos": [1, 1], "kind": "sand"},
+            {"pos": [2, 1], "kind": "gravel"},
+            {"pos": [3, 1], "kind": "darkness"},
+            {"pos": [4, 1], "kind": "plant"},
+            {"pos": [5, 1], "kind": "necromancer_vulnerable"},
+            {"pos": [6, 1], "kind": "fire_tree"},
+            {"pos": [7, 1], "kind": "ice_shrub"},
+            {"pos": [8, 1], "kind": "stalagmite"},
+            {"pos": [1, 2], "kind": "grave"},
+            {"pos": [2, 2], "kind": "grave2"},
+            {"pos": [3, 2], "kind": "grave3"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": []
+    },
+    {
+      "scenario_id": "enchant_fire_sword_and_ice_armour",
+      "seed": 110,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 110,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "inventory": {"sword": 2, "armour": [1, 1, 1, 1], "ruby": 1, "sapphire": 1, "mana": 18, "intelligence": 4},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "enchantment_table_fire"},
+            {"pos": [4, 5], "kind": "enchantment_table_ice"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["enchant_sword", "down", "enchant_armour"]
+    },
+    {
+      "scenario_id": "descend_all_craftax_floors",
+      "seed": 111,
+      "world": {
+        "use_default": "parity_room",
+        "seed": 111,
+        "initial_state": {
+          "player": {"pos": [5, 5], "direction": [1, 0], "level": 0},
+          "monsters_killed": [8, 8, 8, 8, 8, 8, 8, 8, 0],
+          "tiles": [
+            {"level": 0, "pos": [5, 5], "kind": "path"},
+            {"level": 0, "pos": [5, 5], "kind": "ladder_down"},
+            {"level": 1, "pos": [9, 6], "kind": "path"},
+            {"level": 1, "pos": [9, 6], "kind": "ladder_up"},
+            {"level": 1, "pos": [10, 6], "kind": "path"},
+            {"level": 1, "pos": [10, 6], "kind": "ladder_down"},
+            {"level": 2, "pos": [6, 3], "kind": "path"},
+            {"level": 2, "pos": [6, 3], "kind": "ladder_up"},
+            {"level": 2, "pos": [7, 3], "kind": "path"},
+            {"level": 2, "pos": [7, 3], "kind": "ladder_down"},
+            {"level": 3, "pos": [8, 8], "kind": "path"},
+            {"level": 3, "pos": [8, 8], "kind": "ladder_up"},
+            {"level": 3, "pos": [9, 8], "kind": "path"},
+            {"level": 3, "pos": [9, 8], "kind": "ladder_down"},
+            {"level": 4, "pos": [4, 5], "kind": "path"},
+            {"level": 4, "pos": [4, 5], "kind": "ladder_up"},
+            {"level": 4, "pos": [5, 5], "kind": "path"},
+            {"level": 4, "pos": [5, 5], "kind": "ladder_down"},
+            {"level": 5, "pos": [2, 8], "kind": "path"},
+            {"level": 5, "pos": [2, 8], "kind": "ladder_up"},
+            {"level": 5, "pos": [3, 8], "kind": "path"},
+            {"level": 5, "pos": [3, 8], "kind": "ladder_down"},
+            {"level": 6, "pos": [1, 6], "kind": "path"},
+            {"level": 6, "pos": [1, 6], "kind": "ladder_up"},
+            {"level": 6, "pos": [2, 6], "kind": "path"},
+            {"level": 6, "pos": [2, 6], "kind": "ladder_down"},
+            {"level": 7, "pos": [5, 0], "kind": "path"},
+            {"level": 7, "pos": [5, 0], "kind": "ladder_up"},
+            {"level": 7, "pos": [6, 0], "kind": "path"},
+            {"level": 7, "pos": [6, 0], "kind": "ladder_down"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["descend", "right", "descend", "right", "descend", "right", "descend", "right", "descend", "right", "descend", "right", "descend", "right", "descend"]
+    },
+    {
+      "scenario_id": "ascend_floor_transition",
+      "seed": 112,
+      "world": {
+        "use_default": "parity_room",
+        "seed": 112,
+        "initial_state": {
+          "player": {"pos": [5, 5], "direction": [1, 0], "level": 1},
+          "tiles": [
+            {"level": 1, "pos": [5, 5], "kind": "ladder_up"},
+            {"level": 0, "pos": [8, 8], "kind": "ladder_down"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["ascend"]
+    },
+    {
+      "scenario_id": "eat_passive_mobs",
+      "seed": 113,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 113,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "tiles": [
+            {"pos": [1, 1], "kind": "grass"},
+            {"pos": [2, 1], "kind": "grass"},
+            {"pos": [3, 1], "kind": "grass"},
+            {"pos": [4, 1], "kind": "grass"},
+            {"pos": [5, 1], "kind": "grass"},
+            {"pos": [6, 1], "kind": "grass"},
+            {"pos": [7, 1], "kind": "grass"},
+            {"pos": [1, 2], "kind": "grass"},
+            {"pos": [2, 2], "kind": "grass"},
+            {"pos": [3, 2], "kind": "grass"},
+            {"pos": [4, 2], "kind": "grass"},
+            {"pos": [5, 2], "kind": "grass"},
+            {"pos": [6, 2], "kind": "grass"},
+            {"pos": [7, 2], "kind": "grass"},
+            {"pos": [1, 3], "kind": "grass"},
+            {"pos": [2, 3], "kind": "grass"},
+            {"pos": [3, 3], "kind": "grass"},
+            {"pos": [4, 3], "kind": "grass"},
+            {"pos": [5, 3], "kind": "grass"},
+            {"pos": [6, 3], "kind": "grass"},
+            {"pos": [7, 3], "kind": "grass"},
+            {"pos": [1, 4], "kind": "grass"},
+            {"pos": [2, 4], "kind": "grass"},
+            {"pos": [3, 4], "kind": "grass"},
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "grass"},
+            {"pos": [6, 4], "kind": "grass"},
+            {"pos": [7, 4], "kind": "grass"},
+            {"pos": [1, 5], "kind": "grass"},
+            {"pos": [2, 5], "kind": "grass"},
+            {"pos": [3, 5], "kind": "grass"},
+            {"pos": [4, 5], "kind": "grass"},
+            {"pos": [5, 5], "kind": "grass"},
+            {"pos": [6, 5], "kind": "grass"},
+            {"pos": [7, 5], "kind": "grass"},
+            {"pos": [1, 6], "kind": "grass"},
+            {"pos": [2, 6], "kind": "grass"},
+            {"pos": [3, 6], "kind": "grass"},
+            {"pos": [4, 6], "kind": "grass"},
+            {"pos": [5, 6], "kind": "grass"},
+            {"pos": [6, 6], "kind": "grass"},
+            {"pos": [7, 6], "kind": "grass"},
+            {"pos": [1, 7], "kind": "grass"},
+            {"pos": [2, 7], "kind": "grass"},
+            {"pos": [3, 7], "kind": "grass"},
+            {"pos": [4, 7], "kind": "grass"},
+            {"pos": [5, 7], "kind": "grass"},
+            {"pos": [6, 7], "kind": "grass"},
+            {"pos": [7, 7], "kind": "grass"}
+          ],
+          "entities": [
+            {"kind": "cow", "pos": [5, 4], "level": 0, "health": 1},
+            {"kind": "bat", "pos": [4, 5], "level": 0, "health": 1},
+            {"kind": "snail", "pos": [3, 4], "level": 0, "health": 1}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do", "left", "do", "up", "down", "do"]
+    },
+    {
+      "scenario_id": "eat_bat",
+      "seed": 1131,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 1131,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "grass"}
+          ],
+          "entities": [{"kind": "bat", "pos": [5, 4], "level": 0, "health": 1}]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "eat_snail",
+      "seed": 1132,
+      "world": {
+        "use_default": "fixture_room",
+        "seed": 1132,
+        "initial_state": {
+          "player": {"pos": [4, 4], "direction": [1, 0], "level": 0},
+          "tiles": [
+            {"pos": [4, 4], "kind": "grass"},
+            {"pos": [5, 4], "kind": "grass"}
+          ],
+          "entities": [{"kind": "snail", "pos": [5, 4], "level": 0, "health": 1}]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_zombie",
+      "seed": 120,
+      "world": {"use_default": "fixture_room", "seed": 120, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "zombie", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_skeleton",
+      "seed": 121,
+      "world": {"use_default": "fixture_room", "seed": 121, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "skeleton", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_gnome_warrior",
+      "seed": 122,
+      "world": {"use_default": "fixture_room", "seed": 122, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "gnome_warrior", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_gnome_archer",
+      "seed": 123,
+      "world": {"use_default": "fixture_room", "seed": 123, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "gnome_archer", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_orc_solider",
+      "seed": 124,
+      "world": {"use_default": "fixture_room", "seed": 124, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "orc_solider", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_orc_mage",
+      "seed": 125,
+      "world": {"use_default": "fixture_room", "seed": 125, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "orc_mage", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_lizard",
+      "seed": 126,
+      "world": {"use_default": "fixture_room", "seed": 126, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "lizard", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_kobold",
+      "seed": 127,
+      "world": {"use_default": "fixture_room", "seed": 127, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "kobold", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_knight",
+      "seed": 128,
+      "world": {"use_default": "fixture_room", "seed": 128, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "knight", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_archer",
+      "seed": 129,
+      "world": {"use_default": "fixture_room", "seed": 129, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "archer", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_troll",
+      "seed": 130,
+      "world": {"use_default": "fixture_room", "seed": 130, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "troll", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_deep_thing",
+      "seed": 131,
+      "world": {"use_default": "fixture_room", "seed": 131, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "tiles": [{"pos": [5, 4], "kind": "water"}], "entities": [{"kind": "deep_thing", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_pigman",
+      "seed": 132,
+      "world": {"use_default": "fixture_room", "seed": 132, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "pigman", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_fire_elemental",
+      "seed": 133,
+      "world": {"use_default": "fixture_room", "seed": 133, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "fire_elemental", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_frost_troll",
+      "seed": 134,
+      "world": {"use_default": "fixture_room", "seed": 134, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "frost_troll", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "defeat_ice_elemental",
+      "seed": 135,
+      "world": {"use_default": "fixture_room", "seed": 135, "initial_state": {"player": {"pos": [4, 4], "direction": [1, 0], "level": 0}, "inventory": {"sword": 4, "strength": 5}, "entities": [{"kind": "ice_elemental", "pos": [5, 4], "level": 0, "health": 1}]}},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "damage_and_defeat_necromancer",
+      "seed": 136,
+      "world": {
+        "use_default": "parity_room",
+        "seed": 136,
+        "initial_state": {
+          "player": {"pos": [5, 5], "direction": [1, 0], "level": 8},
+          "inventory": {"boss_progress": 7},
+          "tiles": [
+            {"level": 8, "pos": [5, 5], "kind": "path"},
+            {"level": 8, "pos": [6, 5], "kind": "necromancer"}
+          ]
+        }
+      },
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["do"]
+    },
+    {
+      "scenario_id": "invalid_action_and_truncation",
+      "seed": 140,
+      "world": {"use_default": "fixture_room", "seed": 140, "max_steps": 2},
+      "rules": {"base": "symbolic_no_homeostasis"},
+      "actions": ["not_an_action", "noop", "noop"]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+id: craftax-singleplayer
+name: Craftax Single Player
+schema: gamebench.task.craftax.v1
+gold_lane: python+rust
+description: Independent GameBench symbolic Craftax task covering the Matthews Craftax full action/state/achievement surface without JAX or Crafter imports.

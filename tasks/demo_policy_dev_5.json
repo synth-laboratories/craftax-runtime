@@ -1,0 +1,7 @@
+{
+  "schema": "gamebench.task.craftax.v1",
+  "task_id": "craftax_demo_policy_dev_5",
+  "world": {"use_default": "policy_dev_small"},
+  "rules": {"base": "symbolic_no_homeostasis"},
+  "readouts": {"profile": "symbolic_compact"}
+}

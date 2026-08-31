@@ -1,0 +1,19 @@
+{
+  "schema": "gamebench.nev_kinds.craftax.v1",
+  "kinds": [
+    "task_resolved",
+    "action_applied",
+    "state_transition",
+    "resource_delta",
+    "achievement_unlocked",
+    "rule_violation",
+    "entity_transition",
+    "floor_transition",
+    "reward_delta",
+    "checkpoint_cadence",
+    "death",
+    "episode_truncated",
+    "terminal_success",
+    "terminal"
+  ]
+}

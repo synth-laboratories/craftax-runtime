@@ -1,0 +1,8 @@
+{
+  "cap_drop": ["ALL"],
+  "candidate_isolation": "bubblewrap-unshare-all",
+  "no_new_privileges": true,
+  "schema_version": "gamebench.craftax.scorer_runtime_security.v1",
+  "seccomp": "unconfined",
+  "user": "65532:65532"
+}

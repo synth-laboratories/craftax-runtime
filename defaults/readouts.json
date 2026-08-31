@@ -1,0 +1,14 @@
+{
+  "symbolic_compact": {
+    "symbolic": true,
+    "local_map": true,
+    "full_world_state": false,
+    "observation_text": true
+  },
+  "symbolic_full": {
+    "symbolic": true,
+    "local_map": true,
+    "full_world_state": true,
+    "observation_text": true
+  }
+}

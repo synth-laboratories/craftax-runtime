@@ -1,0 +1,54 @@
+{
+  "schema": "gamebench.prebuilt_binary.v1",
+  "artifact": {
+    "name": "craftax_repl",
+    "path": "craftax_repl",
+    "sha256": "de85d645a3d2c72e9680795c5606974b7f5f105169c9df1172aeaf02bd5fe8af",
+    "git_blob_sha1": "c6c6a99dcdc3e0aef254be6b683ecedc6f2e43dd",
+    "size_bytes": 1614448,
+    "mode": "0755",
+    "gnu_build_id_sha1": "170ae2d7887e2c8a124756e78a2219a431ada499",
+    "executable": true
+  },
+  "target": {
+    "os": "linux",
+    "architecture": "aarch64",
+    "triple": "aarch64-unknown-linux-gnu",
+    "format": "elf64-littleaarch64-pie",
+    "dynamic_loader": "/lib/ld-linux-aarch64.so.1",
+    "minimum_glibc": "2.34"
+  },
+  "source": {
+    "repository": "https://github.com/JoshuaPurtell/gamebench.git",
+    "canonical_commit": "80c630db6ab35e7c9ae2b79eda51ac2bfc16ad6b",
+    "root": "tasks/craftax-singleplayer/gold_rust",
+    "files": {
+      "Cargo.lock": "e1f0658310b1d3bb023874538007300031a015e359d5de1092186e20e4d4bd59",
+      "Cargo.toml": "85c942304b7c3eaddf7376f6d41303ba34ea8940e5c00d8ed9c24c0dc530f968",
+      "src/bin/craftax_repl.rs": "5aac363820892e33bcd61121d4ec0db76290215b278b47fe96093f374fe60efa",
+      "src/lib.rs": "55123e543ed146fdbebcdef8f9ef4e9406c0663cf0cbc11299af91feed0658df",
+      "src/native.rs": "7180e8f9deca553b4f9ef4f3c25606d0e55d2e6a64d708294a7f208738fc41f1",
+      "src/render.rs": "a182469b839452ee1cbde124f4fe61daa2b6187481914ab0ac42e73f4610aad8",
+      "src/sprites.rs": "49f8bd48df35ea12227c96a1f9c9a89cfd20b5784a18d52f20e3949f6241ef5e"
+    }
+  },
+  "build": {
+    "container_image": "rust@sha256:8fa55b2f3ddf97471ab6a767bfa3f37e6bad0986ba823e75fea57e2a2a5c3073",
+    "working_directory": "/workspace/tasks/craftax-singleplayer/gold_rust",
+    "command": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--bin",
+      "craftax_repl"
+    ],
+    "rustc": "rustc version 1.97.0 (2d8144b78 2026-07-07)",
+    "reproducibility": {
+      "verified_at": "2026-07-16T03:13:31Z",
+      "canonical_rebuild_sha256": "de85d645a3d2c72e9680795c5606974b7f5f105169c9df1172aeaf02bd5fe8af",
+      "independent_rebuild_sha256": "de85d645a3d2c72e9680795c5606974b7f5f105169c9df1172aeaf02bd5fe8af",
+      "byte_identical": true
+    }
+  }
+}

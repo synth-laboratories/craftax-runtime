@@ -1,0 +1,37 @@
+{
+  "schema": "gamebench.task.craftax.v1",
+  "task_id": "minienv_wood_pickaxe_loose_v1",
+  "scenario_id": "minienv_wood_pickaxe_loose_v1",
+  "max_steps": 120,
+  "world": {
+    "use_default": "fixture_room",
+    "max_steps": 120,
+    "initial_state": {
+      "map": [
+        "#############",
+        "#...........#",
+        "#...T.T.T...#",
+        "#...........#",
+        "#.....@.....#",
+        "#....TAT....#",
+        "#...........#",
+        "#...T.T.T...#",
+        "#...........#",
+        "#...........#",
+        "#...........#",
+        "#...........#",
+        "#############"
+      ],
+      "inventory": {
+        "health": 9
+      },
+      "entities": []
+    }
+  },
+  "rules": {
+    "base": "symbolic_no_homeostasis"
+  },
+  "readouts": {
+    "profile": "symbolic_compact"
+  }
+}

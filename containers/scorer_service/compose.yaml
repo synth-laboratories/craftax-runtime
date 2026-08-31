@@ -1,0 +1,29 @@
+services:
+  craftax-scorer:
+    image: "${GAMEBENCH_SCORER_IMAGE:?GAMEBENCH_SCORER_IMAGE must be an immutable digest}"
+    command:
+      - --authority
+      - /run/gamebench/scorer-authority.json
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8001"
+      - --log-level
+      - info
+    user: "65532:65532"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+      - seccomp=unconfined
+    tmpfs:
+      - /tmp:mode=0700,uid=65532,gid=65532
+    volumes:
+      - "${GAMEBENCH_SCORER_AUTHORITY_FILE:?authority file required}:/run/gamebench/scorer-authority.json:ro"
+      - "${GAMEBENCH_SCORER_SERVICE_AUTH_FILE:?service auth file required}:/run/gamebench/service-auth:ro"
+      - "${GAMEBENCH_SCORER_STATE_DIRECTORY:?state directory required}:/var/lib/gamebench/scorer-state"
+      - "${GAMEBENCH_SCORER_WORKSPACE_DIRECTORY:?workspace directory required}:/var/lib/gamebench/scorer-workspaces"
+    ports:
+      - "127.0.0.1:${GAMEBENCH_SCORER_PORT:-8001}:8001"
+    restart: "no"

@@ -1,0 +1,40 @@
+{
+  "schema": "gamebench.task.craftax.v1",
+  "task_id": "minienv_defeat_zombie_arena_v1",
+  "scenario_id": "minienv_defeat_zombie_arena_v1",
+  "world": {
+    "use_default": "fixture_room",
+    "initial_state": {
+      "map": [
+        "#########",
+        "#.......#",
+        "#..@....#",
+        "#.......#",
+        "#.......#",
+        "#.......#",
+        "#.......#",
+        "#.......#",
+        "#########"
+      ],
+      "inventory": {
+        "health": 3
+      },
+      "entities": [
+        {
+          "kind": "zombie",
+          "pos": [
+            5,
+            5
+          ],
+          "health": 5
+        }
+      ]
+    }
+  },
+  "rules": {
+    "base": "symbolic_no_homeostasis"
+  },
+  "readouts": {
+    "profile": "symbolic_compact"
+  }
+}

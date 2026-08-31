@@ -1,0 +1,1 @@
+"""Craftax container adapters."""

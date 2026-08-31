@@ -1,0 +1,47 @@
+{
+  "craftax_default": {
+    "width": 48,
+    "height": 48,
+    "levels": 9,
+    "max_steps": 5000,
+    "view_radius": 4,
+    "checkpoint_every_n_steps": 10,
+    "densities": {}
+  },
+  "policy_dev_small": {
+    "width": 16,
+    "height": 16,
+    "levels": 3,
+    "max_steps": 120,
+    "view_radius": 4,
+    "checkpoint_every_n_steps": 10,
+    "densities": {
+      "tree": 0.16,
+      "water": 0.05
+    }
+  },
+  "fixture_room": {
+    "width": 9,
+    "height": 9,
+    "levels": 2,
+    "max_steps": 60,
+    "view_radius": 4,
+    "checkpoint_every_n_steps": 5,
+    "densities": {
+      "tree": 0.0,
+      "water": 0.0
+    }
+  },
+  "parity_room": {
+    "width": 11,
+    "height": 11,
+    "levels": 9,
+    "max_steps": 160,
+    "view_radius": 5,
+    "checkpoint_every_n_steps": 5,
+    "densities": {
+      "tree": 0.0,
+      "water": 0.0
+    }
+  }
+}

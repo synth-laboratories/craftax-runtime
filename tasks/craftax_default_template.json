@@ -1,0 +1,10 @@
+{
+  "schema": "gamebench.task.craftax.v1",
+  "task_id": "craftax_default",
+  "max_steps": 5000,
+  "world": {
+    "use_default": "craftax_default"
+  },
+  "rules": {"base": "symbolic_no_homeostasis"},
+  "readouts": {"profile": "symbolic_compact"}
+}

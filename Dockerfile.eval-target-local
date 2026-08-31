@@ -1,0 +1,14 @@
+# Local Workshop eval target.
+#
+# The one-shot eval.target.v1 wrapper is supplied by an immutable image already
+# present in the local Docker store. The complete Craftax task implementation is
+# then replaced with this checkout, so evaluation runs against local source and
+# the build performs no registry pull.
+FROM craftax-eval-target:eval-base-local
+
+USER root
+COPY . /opt/gamebench/tasks/craftax-singleplayer
+RUN chown -R target:target /opt/gamebench/tasks/craftax-singleplayer
+USER target
+
+LABEL ai.synth.eval.target.build="local-source-overlay"
